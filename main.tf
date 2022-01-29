@@ -18,6 +18,7 @@ resource "aws_iam_role" "cloud9-aft-role" {
     ]
 }
 EOF
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AdministratorAccess"]
 }
 
 resource "aws_iam_instance_profile" "cloud9-aft-profile" {
