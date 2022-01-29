@@ -1,4 +1,11 @@
 #!/bin/bash
+set -e
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Please include the CT Home region, i.e. us-east-1'
+    exit 1
+fi
+
 # install terraform
 echo "Installing Terraform"
 sudo yum install -y yum-utils
