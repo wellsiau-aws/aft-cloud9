@@ -7,6 +7,16 @@ variable "ct_home_region" {
   }
 }
 
+variable "create_vpc" {
+  description = "Flag to enable / disable VPC module"
+  default     = "false"
+  type        = string
+  validation {
+    condition     = can(regex("(true|false", var.create_vpc))
+    error_message = "Variable create_vpc: select true or false."
+  }
+}
+
 variable "c9_instance_profile" {
   description = "Name of the IAM instance profile for Cloud9"
   type        = string
