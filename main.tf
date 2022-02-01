@@ -2,7 +2,12 @@ provider "aws" {
   region = var.ct_home_region
 }
 
+resource "random_id" "id" {
+  byte_length = 8
+}
+
 resource "aws_iam_role" "cloud9-aft-role" {
+  name = "cloud9-aft-role-${random_id.id.hex}"
   path = "/"
   assume_role_policy = <<EOF
 {
