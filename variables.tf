@@ -7,13 +7,13 @@ variable "ct_home_region" {
   }
 }
 
-variable "create_vpc" {
-  description = "Flag to enable / disable VPC module"
+variable "use_aft_vpc" {
+  description = "Set this to true to use AFT Management VPC for CLoud9"
   default     = "false"
   type        = string
   validation {
-    condition     = can(regex("(true|false", var.create_vpc))
-    error_message = "Variable create_vpc: select true or false."
+    condition     = contains(["true","false"], var.use_aft_vpc)
+    error_message = "Variable use_aft_vpc: select true or false."
   }
 }
 

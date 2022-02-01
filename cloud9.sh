@@ -18,6 +18,7 @@ sudo yum -y install terraform
 
 # get CT home region 
 export TF_VAR_ct_home_region=$1
+export TF_VAR_create_vpc=$2
 
 # Run Terraform
 terraform init
