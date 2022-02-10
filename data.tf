@@ -1,4 +1,5 @@
 data "aws_vpc" "aft_management_vpc" {
+  count    = var.use_aft_vpc ? 1 : 0
   filter {
     name   = "tag:Name"
     values = ["aft-management-vpc"]
@@ -6,7 +7,8 @@ data "aws_vpc" "aft_management_vpc" {
 }
 
 data "aws_subnet_ids" "aft_public_subnet_01" {
-  vpc_id   = data.aws_vpc.aft_management_vpc.id
+  count    = var.use_aft_vpc ? 1 : 0
+  vpc_id   = data.aws_vpc.aft_management_vpc[count.index].id
   filter {
     name   = "tag:Name"
     values = ["aft-vpc-public-subnet-01"]
